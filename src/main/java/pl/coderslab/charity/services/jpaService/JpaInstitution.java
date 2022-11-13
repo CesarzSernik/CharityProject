@@ -1,9 +1,9 @@
-package pl.coderslab.charity.Services.JpaService;
+package pl.coderslab.charity.services.jpaService;
 
 import org.springframework.stereotype.Service;
-import pl.coderslab.charity.Entities.Institution;
-import pl.coderslab.charity.Repositories.InstitutionRepository;
-import pl.coderslab.charity.Services.InstitutionService;
+import pl.coderslab.charity.entities.Institution;
+import pl.coderslab.charity.repositories.InstitutionRepository;
+import pl.coderslab.charity.services.InstitutionService;
 
 import java.util.List;
 @Service

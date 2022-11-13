@@ -1,4 +1,4 @@
-package pl.coderslab.charity.Entities;
+package pl.coderslab.charity.entities;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

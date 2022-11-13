@@ -8,7 +8,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @ComponentScan
-@EntityScan(basePackages = "pl.coderslab.charity.Entities")
-@EnableJpaRepositories(basePackages = "pl.coderslab.charity.Services.JpaService")
+@EntityScan(basePackages = "pl.coderslab.charity.entities")
+@EnableJpaRepositories(basePackages = "pl.coderslab.charity.repositories")
 public class AppConfig implements WebMvcConfigurer {
 }

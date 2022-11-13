@@ -1,14 +1,14 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<%@ taglib prefix = "fmt" uri = "http://java.sun.com/jsp/jstl/fmt" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <jsp:include page="header.jsp"/>
 
 <section class="stats">
     <div class="container container--85">
         <div class="stats--item">
-            <em>13</em>
+            <em>${donationsSum}</em>
 
             <h3>Oddanych worków</h3>
             <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Eius est beatae, quod accusamus illum
@@ -16,7 +16,7 @@
         </div>
 
         <div class="stats--item">
-            <em>5</em>
+            <em>${donationsCount}</em>
             <h3>Przekazanych darów</h3>
             <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Laboriosam magnam, sint nihil cupiditate quas
                 quam.</p>
@@ -74,13 +74,15 @@
             Możesz sprawdzić czym się zajmują.</p>
 
         <ul class="help--slides-items">
-            <c:forEach items="${institutions}" var="institution">
-            <li>
-                <div class="col">
-                    <div class="title">Fundacja "${institution.getName()}"</div>
-                    <div class="subtitle">Cel i misja: ${institution.getDescription()}</div>
-                </div>
-            </li>
+            <c:forEach items="${institutions}" var="institution" varStatus="status">
+                <c:if test="${status.count <= 5}">
+                    <li>
+                        <div class="col">
+                            <div class="title">Fundacja "${institution.getName()}"</div>
+                            <div class="subtitle">Cel i misja: ${institution.getDescription()}</div>
+                        </div>
+                    </li>
+                </c:if>
             </c:forEach>
         </ul>
     </div>
