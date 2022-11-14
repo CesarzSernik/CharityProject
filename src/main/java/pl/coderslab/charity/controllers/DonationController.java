@@ -36,6 +36,6 @@ public class DonationController {
     @PostMapping("donation/save")
     public String processDonationAddForm(@ModelAttribute("donation") Donation donation) {
         jpaDonation.create(donation);
-        return "redirect:/";
+        return "redirect:donation/success";
     }
 }
