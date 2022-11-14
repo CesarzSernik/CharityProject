@@ -6,9 +6,11 @@
 
 <jsp:include page="header.jsp"/>
 
+<jsp:useBean id="categories" scope="request" type="java.util.List"/>
 <form:checkboxes path="categories"
-                 items="${categories.name}"/>
-<form:select path="institution" items="${institutions}"/>
+                 items="${categories}" itemLabel="name" itemValue="id"/>
+<jsp:useBean id="institutions" scope="request" type="java.util.List"/>
+<form:select path="institution" items="${institutions}" itemLabel="name" itemValue="id"/>
 <form:input path="zipCode" />
 <form:input path="street" />
 <form:input path="city"/>

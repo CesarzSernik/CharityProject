@@ -5,6 +5,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.entities.Category;
 import pl.coderslab.charity.entities.Institution;
 import pl.coderslab.charity.services.jpaService.JpaCategory;
@@ -38,13 +39,13 @@ public class DonationController {
         return jpaCategory.getAll();
     }
 
-    @GetMapping("/donation/add")
+    @RequestMapping("/donation/add")
     public String showDonationAddForm() {
         return "donation-add";
     }
 
-    @PostMapping("/donation/add")
-    public String processDonationAddForm() {
-        return "redirect:/";
-    }
+//    @PostMapping("/donation/add")
+//    public String processDonationAddForm() {
+//        return "redirect:/";
+//    }
 }
