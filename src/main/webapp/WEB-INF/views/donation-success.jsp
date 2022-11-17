@@ -5,7 +5,7 @@
 
 <jsp:include page="header.jsp"/>
 
-<div>
+<div class="slogan container container--90">
     <h3 class="bold">
         Dziękujemy za przesłanie formularza. Na maila prześlemy wszelkie informacje o odbiorze.
     </h3>
