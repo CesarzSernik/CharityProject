@@ -49,9 +49,9 @@
                                     name="categories"
                                     value="${category.id}"
                             />
-                            <span class="checkbox"></span>
+                            <span class="checkbox" hidden="${category.name}"></span>
                             <span class="description">
-                                ${category.name}
+                                    ${category.name}
                             </span>
                         </label>
                     </div>
@@ -67,7 +67,7 @@
                 <div class="form-group form-group--inline">
                     <form:label path="quantity">
                         Liczba 60l worków:
-                        <form:input path="quantity"/>
+                        <form:input path="quantity" id="quantity"/>
                     </form:label>
                 </div>
 
@@ -108,22 +108,27 @@
                         <h1 class="bold">Adres odbioru</h1>
                         <div class="form-group form-group--inline">
                             <form:label path="street">
-                                Ulica: <form:input path="street"/>
+                                Ulica: <form:input path="street" id="street"/>
                             </form:label>
                         </div>
                         <div class="form-group form-group--inline">
                             <form:label path="city">
-                                Miasto: <form:input path="city"/>
+                                Miasto: <form:input path="city" id="city"/>
                             </form:label>
                         </div>
                         <div class="form-group form-group--inline">
                             <form:label path="zipCode">
-                                Kod pocztowy: <form:input path="zipCode"/>
+                                Kod pocztowy: <form:input path="zipCode" id="zipCode"/>
                             </form:label>
                         </div>
                         <div class="form-group form-group--inline">
                             <form:label path="phoneNumber">
-                                Numer telefonu: <form:input type="number" path="phoneNumber" maxlength="9"/>
+                                Numer telefonu:
+                                <form:input
+                                        type="number"
+                                        id="phoneNumber"
+                                        path="phoneNumber"
+                                        maxlength="9"/>
                             </form:label>
                         </div>
                     </div>
@@ -132,17 +137,17 @@
                         <h1 class="bold">Termin odbioru</h1>
                         <div class="form-group form-group--inline">
                             <form:label path="pickUpDate">
-                                Data: <form:input type="date" path="pickUpDate"/>
+                                Data: <form:input type="date" path="pickUpDate" id="pickUpDate"/>
                             </form:label>
                         </div>
                         <div class="form-group form-group--inline">
                             <form:label path="pickUpTime">
-                                Godzina: <form:input type="time" path="pickUpTime"/>
+                                Godzina: <form:input type="time" path="pickUpTime" id="pickUpTime"/>
                             </form:label>
                         </div>
                         <div class="form-group form-group--inline">
                             <form:label path="pickUpComment">
-                                Uwagi dla kuriera: <form:textarea path="pickUpComment"/>
+                                Uwagi dla kuriera: <form:textarea path="pickUpComment" id="pickUpComment"/>
                             </form:label>
                         </div>
                     </div>
@@ -164,15 +169,15 @@
                         <ul>
                             <li>
                                 <span class="icon icon-bag"></span>
-                                <span class="summary--text">
-                                        <%--${numberOfBags} worki ${categoryOfDonation}--%>
-                                </span>
+                                <span class="summary--text" id="sumQuantity"></span>
+                                <span class="summary--text"> worki </span>
+                                <span class="summary--text" id="sumCategories"></span>
                             </li>
                             <li>
-                                <span class="icon icon--hand"></span>
-                                <span class="summary--text">
-                                        <%--Dla fundacji: "${chosenInstitution}" w ${cityOfInstitution}<br>--%>
-                                </span>
+                                <span class="icon icon--hands"></span>
+                                <span class="summary--text">Dla fundacji: "</span>
+                                <span class="summary--text" id="sumInstitution"></span>
+                                <span class="summary--text">" <%--w ${cityOfInstitution}--%></span>
                             </li>
                         </ul>
                     </div>
