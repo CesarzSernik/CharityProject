@@ -5,12 +5,15 @@
 
 <jsp:include page="header.jsp"/>
 
-<div class="slogan container container--90">
-    <h3 class="bold">
-        Dziękujemy za przesłanie formularza. Na maila prześlemy wszelkie informacje o odbiorze.
-    </h3>
-
-
-</div>
+<header class="header--main-page">
+    <jsp:include page="navbar.jsp"/>
+    <div class="slogan container container--90">
+        <div class="slogan--item">
+            <h1 class="bold">
+                "Dziękujemy za przesłanie formularza. Na maila prześlemy wszelkie informacje o odbiorze."
+            </h1>
+        </div>
+    </div>
+</header>
 
 <jsp:include page="footer.jsp"/>

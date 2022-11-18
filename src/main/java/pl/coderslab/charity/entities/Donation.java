@@ -49,6 +49,7 @@ public class Donation {
     @DateTimeFormat(pattern = "yyyy-MM-dd")
     private LocalDate pickUpDate;
     private LocalTime pickUpTime;
+    @Nullable
     private String pickUpComment;
 
 }

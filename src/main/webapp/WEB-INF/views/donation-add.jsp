@@ -5,7 +5,9 @@
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 
 <jsp:include page="header.jsp"/>
-
+<header class="header--form-page" >
+    <jsp:include page="navbar.jsp"/>
+</header>
 <%--@elvariable id="categories" type="java.util.List"--%>
 <%--@elvariable id="institutions" type="java.util.List"--%>
 
@@ -37,7 +39,6 @@
         <form:form method="post" action="/donation/save" modelAttribute="donation">
 
             <%--STEP 1--%>
-            <%--Change to c:forEach list--%>
             <div id="categoryStep" data-step="1" class="active">
                 <h2 class="bold">Zaznacz co chcesz oddać:</h2>
 

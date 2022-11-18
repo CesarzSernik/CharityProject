@@ -870,7 +870,7 @@ header.header--form-page {
   background-position: top left -500px;
   background-repeat: no-repeat;
   background-size: auto 100%;
-  height: 100vh;
+  height: 15vh;
 }
 
 /* line 23, scss/modules/_header.scss */
