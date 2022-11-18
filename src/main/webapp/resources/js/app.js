@@ -179,12 +179,12 @@ document.addEventListener("DOMContentLoaded", function () {
             if (this.currentStep === 5) {
 
                 let categories = document.querySelectorAll("input:checked[name=categories]");
-                let selectedCategories = {};
+                let selectedCategories = [];
                 for (let i = 0; i < categories.length; i++) {
-                    selectedCategories[i] = categories[i].value;
+                    selectedCategories[i] = categories[i].nextSibling.nextSibling.getAttribute("value").toLowerCase();
                 }
-                if (selectedCategories > 1) {
-                    sumCategories.innerHTML = selectedCategories;
+                if (selectedCategories.length > 1) {
+                    sumCategories.innerHTML = selectedCategories[0];
                     for (let i = 1; i < selectedCategories.length; i++) {
                         sumCategories.innerHTML += ", " + selectedCategories[i]
                     }
@@ -192,9 +192,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 } else {
                     sumCategories.innerHTML = selectedCategories[0] + ".";
                 }
-                sumQuantity.innerHTML = document.getElementById("quantity").value;
+
                 let institution = document.querySelector("input:checked[name=institution]");
-                sumInstitution.innerHTML = institution.value;
+                sumInstitution.innerHTML = institution.nextElementSibling.getAttribute("value");
+
+                sumQuantity.innerHTML = document.getElementById("quantity").value;
                 sumStreet.innerHTML = document.getElementById("street").value;
                 sumCity.innerHTML = document.getElementById("city").value;
                 sumZipCode.innerHTML = document.getElementById("zipCode").value;
@@ -202,13 +204,6 @@ document.addEventListener("DOMContentLoaded", function () {
                 sumPickUpDate.innerHTML = document.getElementById("pickUpDate").value;
                 sumPickUpTime.innerHTML = document.getElementById("pickUpTime").value;
                 sumInfoForCourier.innerHTML = document.getElementById("pickUpComment").value;
-
-                console.log("Quantity: " + document.getElementById("quantity").value);
-                console.log("Street: " + document.getElementById("street").value);
-                console.log("ZipCode: " + document.getElementById("zipCode").value);
-                console.log("PU Date: " + document.getElementById("pickUpDate").value);
-                console.log("Comment: " + document.getElementById("pickUpComment").value);
-
             }
 
         }

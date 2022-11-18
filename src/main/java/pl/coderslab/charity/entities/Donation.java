@@ -31,7 +31,7 @@ public class Donation {
     private Long id;
     @NotNull
     private Integer quantity;
-    @OneToMany
+    @ManyToMany
     @NotNull
     private List<Category> categories;
     @OneToOne

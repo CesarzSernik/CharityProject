@@ -50,7 +50,7 @@
                                     name="categories"
                                     value="${category.id}"
                             />
-                            <span class="checkbox" hidden="${category.name}"></span>
+                            <span class="checkbox" value="${category.name}"></span>
                             <span class="description">
                                     ${category.name}
                             </span>
@@ -85,7 +85,7 @@
                     <div class="form-group form-group--checkbox">
                         <label>
                             <input type="radio" name="institution" value="${institution.id}"/>
-                            <span class="checkbox radio"></span>
+                            <span class="checkbox radio" value="${institution.name}"></span>
                             <span class="description">
                   <div class="title">${institution.name}</div>
                   <div class="subtitle">Cel i misja: ${institution.description}</div>
@@ -171,12 +171,12 @@
                             <li>
                                 <span class="icon icon-bag"></span>
                                 <span class="summary--text" id="sumQuantity"></span>
-                                <span class="summary--text"> worki </span>
+                                <span class="summary--text">&nbsp;worki&nbsp;</span>
                                 <span class="summary--text" id="sumCategories"></span>
                             </li>
                             <li>
-                                <span class="icon icon--hands"></span>
-                                <span class="summary--text">Dla fundacji: "</span>
+                                <span class="icon icon-hand"></span>
+                                <span class="summary--text">Dla fundacji:&nbsp;"</span>
                                 <span class="summary--text" id="sumInstitution"></span>
                                 <span class="summary--text">" <%--w ${cityOfInstitution}--%></span>
                             </li>
