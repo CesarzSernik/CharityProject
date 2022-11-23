@@ -14,7 +14,7 @@
         </sec:authorize>
         <sec:authorize access="isAuthenticated()">
             <li>
-                Zalogowany jako: <sec:authentication property="principal.email"/>
+                Zalogowany jako: <sec:authentication property="principal.username"/>
             </li>
             <li>
                 <form:form action="/logout" method="post">

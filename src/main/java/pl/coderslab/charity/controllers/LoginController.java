@@ -1,25 +1,40 @@
 package pl.coderslab.charity.controllers;
 
+import org.hibernate.ObjectNotFoundException;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestAttribute;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.entities.CurrentUser;
 import pl.coderslab.charity.entities.User;
+import pl.coderslab.charity.services.jpaService.JpaUser;
 
 @Controller
 public class LoginController {
 
+    private JpaUser jpaUser;
+
+    public LoginController(JpaUser jpaUser) {
+        this.jpaUser = jpaUser;
+    }
+
     @GetMapping("/login")
-    public String showLoginForm() {
+    public String showLoginForm(Model model) {
         return "login";
     }
 
     @PostMapping("/login/process")
-    public void processLoginForm(@RequestAttribute String email, @RequestAttribute String password){
-
+    public String processLoginForm(@RequestParam String username, @RequestParam String password, Model model) {
+        try {
+    User user = jpaUser.getByEmail(username);
+    if (user.getPassword().equals(password)){
+        model.addAttribute("user", user);
+        return "redirect:/";
+    }
+        } catch (ObjectNotFoundException e){
+            return "redirect:/login";
+        }
+        return "redirect:/login";
     }
 
     @GetMapping("/admin")
@@ -28,7 +43,7 @@ public class LoginController {
         try {
             User entityUser = customUser.getUser();
             return "Jesteś zalogowany/a jako: " + entityUser.getEmail();
-        } catch(NullPointerException e){
+        } catch (NullPointerException e) {
             return "Nie jesteś zalogowany/a jako żaden z użytkowników";
         }
     }

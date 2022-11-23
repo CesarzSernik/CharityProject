@@ -12,22 +12,22 @@
 
 <section class="login-page">
     <h2>Załóż konto</h2>
-    <form:form modelAttribute="newUser" method="post" action="/register">
+    <form:form  method="post" action="/register/save" modelAttribute="newUser">
 
         <div class="form-group">
-            <form:input path="name" type="text" name="name" placeholder="Imię" />
+            <form:input path="name" id="name" placeholder="Imię" />
         </div>
         <div class="form-group">
-            <form:input path="surname" type="text" name="surname" placeholder="Nazwisko" />
+            <form:input path="surname" id="surname" placeholder="Nazwisko" />
         </div>
         <div class="form-group">
-            <form:input path="email" type="email" name="email" placeholder="Email" />
+            <form:input path="email" id="email" placeholder="Email" />
         </div>
         <div class="form-group">
-            <form:input path="password" type="password" name="password" placeholder="Hasło" />
+            <form:password path="password" id="password" placeholder="Hasło" />
         </div>
         <div class="form-group">
-            <form:input path="password2" type="password" name="password2" placeholder="Powtórz hasło" />
+            <input type="password" name="password2" id="password2" placeholder="Powtórz hasło" />
         </div>
 
         <div class="form-group form-group--buttons">

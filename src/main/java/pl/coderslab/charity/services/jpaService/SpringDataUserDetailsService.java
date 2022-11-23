@@ -22,7 +22,6 @@ public class SpringDataUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByEmail(String email) throws UsernameNotFoundException {
         User user = jpaUser.getByEmail(email);
         if(user == null){throw new UsernameNotFoundException(email);}
-
         return new CurrentUser(user);
     }
 }

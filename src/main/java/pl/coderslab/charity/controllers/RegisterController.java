@@ -2,6 +2,7 @@ package pl.coderslab.charity.controllers;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.entities.User;
 import pl.coderslab.charity.repositories.UserRepository;
@@ -20,15 +21,19 @@ public class RegisterController {
     }
 
     @GetMapping("/register")
-    public String showRegisterForm() {
+    public String showRegisterForm(Model model) {
+        model.addAttribute("newUser", new User());
         return "register";
     }
 
     @PostMapping("/register/save")
-    public String processRegisterForm(@ModelAttribute("newUser") User user) {
+    public String processRegisterForm(@ModelAttribute("newUser") User user, @RequestParam String password2) {
         try {
-            jpaUser.create(user);
-            return "redirect:/register/success";
+            if (user.getPassword().equals(password2)) {
+                jpaUser.create(user);
+                return "redirect:/register/success";
+            }
+            return "redirect:/register";
         } catch (NullPointerException e) {
             return "redirect:/register";
         }

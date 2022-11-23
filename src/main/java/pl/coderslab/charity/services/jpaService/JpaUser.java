@@ -1,14 +1,16 @@
 package pl.coderslab.charity.services.jpaService;
 
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
+import pl.coderslab.charity.entities.CurrentUser;
 import pl.coderslab.charity.entities.Role;
 import pl.coderslab.charity.entities.User;
 import pl.coderslab.charity.repositories.RoleRepository;
 import pl.coderslab.charity.repositories.UserRepository;
 import pl.coderslab.charity.services.UserService;
 
-import java.util.Arrays;
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
@@ -48,5 +50,12 @@ public class JpaUser implements UserService {
         Role userRole = roleRepository.findByName("ROLE_USER");
         user.setRoles(new HashSet<>(Collections.singletonList(userRole)));
         userRepository.save(user);
+    }
+
+    @Override
+    public UserDetails loadUserByEmail(String email) throws UsernameNotFoundException {
+        User user = getByEmail(email);
+        if(user == null){throw new UsernameNotFoundException(email);}
+        return new CurrentUser(user);
     }
 }
