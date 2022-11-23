@@ -3,6 +3,7 @@ package pl.coderslab.charity.controllers;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +13,7 @@ import pl.coderslab.charity.services.jpaService.JpaDonation;
 import pl.coderslab.charity.services.jpaService.JpaInstitution;
 
 @Controller
+@RequestMapping("/donation")
 public class DonationController {
 
     public JpaInstitution jpaInstitution;
@@ -25,7 +27,7 @@ public class DonationController {
         this.jpaCategory = jpaCategory;
     }
 
-    @RequestMapping("donation/add")
+    @GetMapping("/add")
     public String showDonationAddForm(Model model) {
         model.addAttribute("categories", jpaCategory.getAll());
         model.addAttribute("institutions", jpaInstitution.getAll());
@@ -33,7 +35,7 @@ public class DonationController {
         return "donation-add";
     }
 
-    @PostMapping("donation/save")
+    @PostMapping("/save")
     public String processDonationAddForm(@ModelAttribute("donation") Donation donation) {
         jpaDonation.create(donation);
         return "donation-success";
