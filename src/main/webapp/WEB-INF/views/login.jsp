@@ -21,7 +21,7 @@
           <a href="/login/forgot-password" class="btn btn--small btn--without-border reset-password">Przypomnij hasło</a>
         </div>
 
-        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+<%--        <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
 
         <div class="form-group form-group--buttons">
           <a href="/register" class="btn btn--without-border">Załóż konto</a>

@@ -19,7 +19,7 @@
             <li>
                 <form:form action="/logout" method="post">
                     <input type="submit" value="Wyloguj">
-                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>
+<%--                    <input type="hidden" name="${_csrf.parameterName}" value="${_csrf.token}"/>--%>
                 </form:form>
             </li>
         </sec:authorize>

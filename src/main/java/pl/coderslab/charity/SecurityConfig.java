@@ -16,10 +16,16 @@ public class SecurityConfig {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
                 .antMatchers("/donation/**").authenticated()
-                .and().formLogin()
-                .loginPage("/login").defaultSuccessUrl("/")
-                .and().logout().logoutSuccessUrl("/").permitAll()
-                .and().exceptionHandling().accessDeniedPage("/403");
+                .and().formLogin((form) -> form
+                        .loginPage("/login")
+                        .defaultSuccessUrl("/")
+                        .permitAll()
+                )
+                .logout((logout) -> logout
+                        .logoutSuccessUrl("/")
+                        .permitAll())
+                .exceptionHandling().accessDeniedPage("/403")
+                .and().csrf().disable();
         return http.build();
     }
 
