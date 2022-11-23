@@ -1,4 +1,4 @@
-package pl.coderslab.charity.controllers;
+package pl.coderslab.charity.entities;
 
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

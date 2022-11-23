@@ -3,7 +3,7 @@ package pl.coderslab.charity.services.jpaService;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
-import pl.coderslab.charity.controllers.CurrentUser;
+import pl.coderslab.charity.entities.CurrentUser;
 import pl.coderslab.charity.entities.User;
 import pl.coderslab.charity.services.UserDetailsService;
 
