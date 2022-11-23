@@ -6,8 +6,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import pl.coderslab.charity.entities.Institution;
-import pl.coderslab.charity.services.jpaService.JpaDonation;
-import pl.coderslab.charity.services.jpaService.JpaInstitution;
+import pl.coderslab.charity.services.jpaService.JpaDonationService;
+import pl.coderslab.charity.services.jpaService.JpaInstitutionService;
 
 import java.util.List;
 
@@ -15,28 +15,28 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    public JpaInstitution jpaInstitution;
-    public JpaDonation jpaDonation;
+    public JpaInstitutionService jpaInstitutionService;
+    public JpaDonationService jpaDonationService;
 
     @Autowired
-    public HomeController(JpaInstitution jpaInstitution, JpaDonation jpaDonation) {
-        this.jpaInstitution = jpaInstitution;
-        this.jpaDonation = jpaDonation;
+    public HomeController(JpaInstitutionService jpaInstitutionService, JpaDonationService jpaDonationService) {
+        this.jpaInstitutionService = jpaInstitutionService;
+        this.jpaDonationService = jpaDonationService;
     }
 
     @ModelAttribute("institutions")
     public List<Institution> institutions() {
-        return jpaInstitution.getAll();
+        return jpaInstitutionService.getAll();
     }
 
     @ModelAttribute("donationsCount")
     public Long donationsCount() {
-        return jpaDonation.countAll();
+        return jpaDonationService.countAll();
     }
 
     @ModelAttribute("donationsSum")
     public Integer donationsSumQuantity() {
-        return jpaDonation.sumQuantity();
+        return jpaDonationService.sumQuantity();
     }
 
     @GetMapping

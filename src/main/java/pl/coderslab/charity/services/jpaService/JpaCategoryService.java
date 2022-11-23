@@ -3,16 +3,16 @@ package pl.coderslab.charity.services.jpaService;
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.entities.Category;
 import pl.coderslab.charity.repositories.CategoryRepository;
-import pl.coderslab.charity.services.CategoryService;
+import pl.coderslab.charity.services.CategoryInterface;
 
 import java.util.List;
 
 @Service
-public class JpaCategory implements CategoryService {
+public class JpaCategoryService implements CategoryInterface {
 
     private final CategoryRepository categoryRepository;
 
-    public JpaCategory(CategoryRepository categoryRepository) {
+    public JpaCategoryService(CategoryRepository categoryRepository) {
         this.categoryRepository = categoryRepository;
     }
     @Override

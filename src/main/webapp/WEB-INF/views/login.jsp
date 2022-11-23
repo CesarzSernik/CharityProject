@@ -12,7 +12,7 @@
 
     <section class="login-page">
       <h2>Zaloguj się</h2>
-      <form action="<c:url value="/login/process"/>" method="post">
+      <form action="<c:url value="/login"/>" method="post">
         <div class="form-group">
           <input type="text" id="username" name="username" placeholder="Email"/>
         </div>

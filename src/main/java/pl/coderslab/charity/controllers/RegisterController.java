@@ -6,17 +6,17 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import pl.coderslab.charity.entities.User;
 import pl.coderslab.charity.repositories.UserRepository;
-import pl.coderslab.charity.services.jpaService.JpaUser;
+import pl.coderslab.charity.services.jpaService.JpaUserService;
 
 @Controller
 public class RegisterController {
 
-    public JpaUser jpaUser;
+    public JpaUserService jpaUserService;
     public UserRepository userRepository;
 
     @Autowired
-    public RegisterController(JpaUser jpaUser, UserRepository userRepository) {
-        this.jpaUser = jpaUser;
+    public RegisterController(JpaUserService jpaUserService, UserRepository userRepository) {
+        this.jpaUserService = jpaUserService;
         this.userRepository = userRepository;
     }
 
@@ -30,7 +30,7 @@ public class RegisterController {
     public String processRegisterForm(@ModelAttribute("newUser") User user, @RequestParam String password2) {
         try {
             if (user.getPassword().equals(password2)) {
-                jpaUser.create(user);
+                jpaUserService.create(user);
                 return "redirect:/register/success";
             }
             return "redirect:/register";
@@ -52,7 +52,7 @@ public class RegisterController {
         user.setSurname("Userus");
         user.setEmail("user@charity.pl");
         user.setPassword("user");
-        jpaUser.create(user);
+        jpaUserService.create(user);
         return "user";
     }
 
@@ -64,7 +64,7 @@ public class RegisterController {
         user.setSurname("Adminus");
         user.setEmail("admin@charity.pl");
         user.setPassword("admin");
-        jpaUser.create(user);
+        jpaUserService.create(user);
         return "admin";
     }
 }

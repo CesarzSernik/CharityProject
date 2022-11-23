@@ -4,7 +4,7 @@ import org.springframework.stereotype.Service;
 import pl.coderslab.charity.entities.Donation;
 
 @Service
-public interface DonationService {
+public interface DonationInterface {
 
     Long countAll();
     Integer sumQuantity();

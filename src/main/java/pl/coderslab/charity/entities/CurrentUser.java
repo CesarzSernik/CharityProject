@@ -3,7 +3,6 @@ package pl.coderslab.charity.entities;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
-import pl.coderslab.charity.entities.User;
 
 import java.util.Collection;
 import java.util.stream.Collectors;
@@ -12,6 +11,9 @@ public class CurrentUser extends User implements UserDetails {
 private final User user;
     public CurrentUser(User user) {
         this.user = user;
+        this.setPassword(user.getPassword());
+        this.setEmail(user.getEmail());
+        this.setRoles(user.getRoles());
     }
 
     public User getUser(){
@@ -28,7 +30,7 @@ private final User user;
 
     @Override
     public String getUsername() {
-        return super.getEmail();
+        return this.user.getEmail();
     }
 
     @Override
@@ -49,5 +51,10 @@ private final User user;
     @Override
     public boolean isEnabled() {
         return true;
+    }
+
+    @Override
+    public String getPassword() {
+        return this.user.getPassword();
     }
 }

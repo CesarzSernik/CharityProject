@@ -1,28 +1,25 @@
 package pl.coderslab.charity.services.jpaService;
 
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-import pl.coderslab.charity.entities.CurrentUser;
 import pl.coderslab.charity.entities.Role;
 import pl.coderslab.charity.entities.User;
 import pl.coderslab.charity.repositories.RoleRepository;
 import pl.coderslab.charity.repositories.UserRepository;
-import pl.coderslab.charity.services.UserService;
+import pl.coderslab.charity.services.UserInterface;
 
 import java.util.Collections;
 import java.util.HashSet;
 import java.util.List;
 
 @Service
-public class JpaUser implements UserService {
+public class JpaUserService implements UserInterface {
 
     private final UserRepository userRepository;
     private final RoleRepository roleRepository;
     private final BCryptPasswordEncoder passwordEncoder;
 
-    public JpaUser(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
+    public JpaUserService(UserRepository userRepository, RoleRepository roleRepository, BCryptPasswordEncoder passwordEncoder) {
         this.userRepository = userRepository;
         this.roleRepository = roleRepository;
         this.passwordEncoder = passwordEncoder;
@@ -52,10 +49,4 @@ public class JpaUser implements UserService {
         userRepository.save(user);
     }
 
-    @Override
-    public UserDetails loadUserByEmail(String email) throws UsernameNotFoundException {
-        User user = getByEmail(email);
-        if(user == null){throw new UsernameNotFoundException(email);}
-        return new CurrentUser(user);
-    }
 }

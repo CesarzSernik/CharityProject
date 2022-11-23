@@ -3,14 +3,14 @@ package pl.coderslab.charity.services.jpaService;
 import org.springframework.stereotype.Service;
 import pl.coderslab.charity.entities.Donation;
 import pl.coderslab.charity.repositories.DonationRepository;
-import pl.coderslab.charity.services.DonationService;
+import pl.coderslab.charity.services.DonationInterface;
 
 @Service
-public class JpaDonation implements DonationService {
+public class JpaDonationService implements DonationInterface {
 
     private final DonationRepository donationRepository;
 
-    public JpaDonation(DonationRepository donationRepository) {
+    public JpaDonationService(DonationRepository donationRepository) {
         this.donationRepository = donationRepository;
     }
 

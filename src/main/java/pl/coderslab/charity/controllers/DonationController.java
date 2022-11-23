@@ -8,36 +8,36 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import pl.coderslab.charity.entities.Donation;
-import pl.coderslab.charity.services.jpaService.JpaCategory;
-import pl.coderslab.charity.services.jpaService.JpaDonation;
-import pl.coderslab.charity.services.jpaService.JpaInstitution;
+import pl.coderslab.charity.services.jpaService.JpaCategoryService;
+import pl.coderslab.charity.services.jpaService.JpaDonationService;
+import pl.coderslab.charity.services.jpaService.JpaInstitutionService;
 
 @Controller
 @RequestMapping("/donation")
 public class DonationController {
 
-    public JpaInstitution jpaInstitution;
-    public JpaDonation jpaDonation;
-    public JpaCategory jpaCategory;
+    public JpaInstitutionService jpaInstitutionService;
+    public JpaDonationService jpaDonationService;
+    public JpaCategoryService jpaCategoryService;
 
     @Autowired
-    public DonationController(JpaInstitution jpaInstitution, JpaDonation jpaDonation, JpaCategory jpaCategory) {
-        this.jpaInstitution = jpaInstitution;
-        this.jpaDonation = jpaDonation;
-        this.jpaCategory = jpaCategory;
+    public DonationController(JpaInstitutionService jpaInstitutionService, JpaDonationService jpaDonationService, JpaCategoryService jpaCategoryService) {
+        this.jpaInstitutionService = jpaInstitutionService;
+        this.jpaDonationService = jpaDonationService;
+        this.jpaCategoryService = jpaCategoryService;
     }
 
     @GetMapping("/add")
     public String showDonationAddForm(Model model) {
-        model.addAttribute("categories", jpaCategory.getAll());
-        model.addAttribute("institutions", jpaInstitution.getAll());
+        model.addAttribute("categories", jpaCategoryService.getAll());
+        model.addAttribute("institutions", jpaInstitutionService.getAll());
         model.addAttribute("donation", new Donation());
         return "donation-add";
     }
 
     @PostMapping("/save")
     public String processDonationAddForm(@ModelAttribute("donation") Donation donation) {
-        jpaDonation.create(donation);
+        jpaDonationService.create(donation);
         return "donation-success";
     }
 
